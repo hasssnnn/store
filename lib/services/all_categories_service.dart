@@ -1,6 +1,8 @@
 // ignore_for_file: missing_required_param
 
-import 'package:untitled/helper/api_class.dart';
+
+
+import '../helper/api_class.dart';
 
 class AllCategoriesService {
   Future<List<dynamic>> getAllCategories() async {

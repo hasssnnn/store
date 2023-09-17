@@ -1,8 +1,8 @@
 
 // ignore_for_file: missing_required_param
 
-import 'package:untitled/helper/api_class.dart';
-import 'package:untitled/models/product_model.dart';
+import '../helper/api_class.dart';
+import '../models/product_model.dart';
 
 class GetAllProducts {
 

@@ -1,10 +1,11 @@
 // ignore_for_file: must_be_immutable, unused_local_variable, use_build_context_synchronously
 
 import 'package:flutter/material.dart';
-import 'package:untitled/helper/snack_bar.dart';
-import 'package:untitled/models/product_model.dart';
+
 import 'package:modal_progress_hud_nsn/modal_progress_hud_nsn.dart';
 
+import '../helper/snack_bar.dart';
+import '../models/product_model.dart';
 import '../services/update_product.dart';
 import '../widgets/custom_button.dart';
 import '../widgets/custom_text_field.dart';

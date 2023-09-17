@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:untitled/models/product_model.dart';
-import 'package:untitled/screens/add_product_screen.dart';
-import 'package:untitled/services/all_products_service.dart';
-import 'package:untitled/widgets/custom_card.dart';
+
+import '../models/product_model.dart';
+import '../services/all_products_service.dart';
+import '../widgets/custom_card.dart';
+import 'add_product_screen.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({
@@ -13,58 +14,51 @@ class HomePage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return DefaultTabController(
-      length: 1,
-      child: Scaffold(
-        appBar: AppBar(
-          title: const Text(
-            'New Trend',
-            style: TextStyle(
-                color: Colors.black, fontSize: 20, fontWeight: FontWeight.w500),
-          ),
-          elevation: 0,
-          centerTitle: true,
-          actions: [
-            IconButton(
-                onPressed: () {
-                  Navigator.of(context).pushNamed(AddProductScreen.id);
-                },
-                icon: const Icon(
-                  FontAwesomeIcons.cartPlus,
-                  color: Colors.black,
-                ))
-          ],
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text(
+          'New Trend',
+          style: TextStyle(
+              color: Colors.black, fontSize: 20, fontWeight: FontWeight.w500),
         ),
-        body: TabBarView(
-          children: [
-            Padding(
-              padding: const EdgeInsets.only(left: 16, right: 16, top: 60),
-              child: FutureBuilder<List<ProductModel>>(
-                future: GetAllProducts().getProducts(),
-                builder: ((context, snapshot) {
-                  if (snapshot.hasData) {
-                    List<ProductModel> products = snapshot.data!;
-                    return GridView.builder(
-                      itemCount: products.length,
-                      clipBehavior: Clip.none,
-                      gridDelegate:
-                          const SliverGridDelegateWithFixedCrossAxisCount(
-                        crossAxisCount: 2,
-                        mainAxisSpacing: 60,
-                        crossAxisSpacing: 10,
-                        childAspectRatio: 1.5,
-                      ),
-                      itemBuilder: (context, index) {
-                        return CustomCard(productModel: products[index]);
-                      },
-                    );
-                  } else {
-                    return const Center(child: CircularProgressIndicator());
-                  }
-                }),
-              ),
-            ),
-          ],
+        elevation: 0,
+        centerTitle: true,
+        actions: [
+          IconButton(
+              onPressed: () {
+                Navigator.of(context).pushNamed(AddProductScreen.id);
+              },
+              icon: const Icon(
+                FontAwesomeIcons.cartPlus,
+                color: Colors.black,
+              ))
+        ],
+      ),
+      body: Padding(
+        padding: const EdgeInsets.only(left: 16, right: 16, top: 60),
+        child: FutureBuilder<List<ProductModel>>(
+          future: GetAllProducts().getProducts(),
+          builder: ((context, snapshot) {
+            if (snapshot.hasData) {
+              List<ProductModel> products = snapshot.data!;
+              return GridView.builder(
+                itemCount: products.length,
+                clipBehavior: Clip.none,
+                gridDelegate:
+                    const SliverGridDelegateWithFixedCrossAxisCount(
+                  crossAxisCount: 2,
+                  mainAxisSpacing: 60,
+                  crossAxisSpacing: 10,
+                  childAspectRatio: 1.5,
+                ),
+                itemBuilder: (context, index) {
+                  return CustomCard(productModel: products[index]);
+                },
+              );
+            } else {
+              return const Center(child: CircularProgressIndicator());
+            }
+          }),
         ),
       ),
     );

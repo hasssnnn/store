@@ -2,8 +2,10 @@
 
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
-import 'package:untitled/models/product_model.dart';
-import 'package:untitled/screens/update_product_screen.dart';
+
+
+import '../models/product_model.dart';
+import '../screens/update_product_screen.dart';
 
 class CustomCard extends StatelessWidget {
    CustomCard({super.key, required this.productModel,});

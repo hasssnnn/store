@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:untitled/screens/add_product_screen.dart';
-import 'package:untitled/screens/home_page.dart';
-import 'package:untitled/screens/update_product_screen.dart';
+
+import 'screens/add_product_screen.dart';
+import 'screens/home_page.dart';
+import 'screens/update_product_screen.dart';
+
 
 void main() {
   runApp(const StoreApp());
